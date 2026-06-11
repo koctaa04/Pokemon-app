@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/pokemon_list_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const PokemonApp());
@@ -15,25 +15,14 @@ class PokemonApp extends StatelessWidget {
       title: 'Pokémon Dex',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFE53935)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFE53935),
+          brightness: Brightness.light,
+        ),
         useMaterial3: true,
-        scaffoldBackgroundColor: const Color(0xFFF7F8FC),
-        appBarTheme: const AppBarTheme(
-          centerTitle: false,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
-          foregroundColor: Colors.black,
-        ),
-        textTheme: const TextTheme(
-          headlineSmall: TextStyle(fontWeight: FontWeight.w700),
-          titleLarge: TextStyle(fontWeight: FontWeight.w700),
-          titleMedium: TextStyle(fontWeight: FontWeight.w600),
-          bodyLarge: TextStyle(height: 1.35),
-        ),
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: const PokemonListScreen(),
+      home: const HomeScreen(),
     );
   }
 }
