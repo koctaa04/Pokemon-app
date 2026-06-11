@@ -427,7 +427,7 @@ class _DetailScaffold extends StatelessWidget {
                               const SizedBox(height: 24),
                               const _SectionHeader(
                                 title: 'Description',
-                                subtitle: 'Pokédex entry',
+                                subtitle: 'Pokémon entry',
                               ),
                               const SizedBox(height: 14),
                               Text(
@@ -728,4 +728,4 @@ class _PokeballDecoration extends StatelessWidget {
 }
 
 const String _descriptionText =
-    'A polished Pokédex entry is not available from the current API response, so this screen keeps a premium placeholder ready for future species text.';
+    'A polished Pokémon entry is not available from the current API response, so this screen keeps a premium placeholder ready for future species text.';

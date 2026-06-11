@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() {
   runApp(const PokemonApp());
@@ -22,7 +22,7 @@ class PokemonApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
