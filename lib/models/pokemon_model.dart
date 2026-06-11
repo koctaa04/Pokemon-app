@@ -52,20 +52,54 @@ class PokemonTypeSlot {
   }
 }
 
+class PokemonStatSlot {
+  const PokemonStatSlot({required this.name, required this.value});
+
+  final String name;
+  final int value;
+
+  factory PokemonStatSlot.fromJson(Map<String, dynamic> json) {
+    return PokemonStatSlot(
+      name: (json['stat'] as Map<String, dynamic>?)?['name'] as String? ?? '',
+      value: json['base_stat'] as int? ?? 0,
+    );
+  }
+}
+
+class PokemonAbilitySlot {
+  const PokemonAbilitySlot({required this.name, required this.isHidden});
+
+  final String name;
+  final bool isHidden;
+
+  factory PokemonAbilitySlot.fromJson(Map<String, dynamic> json) {
+    return PokemonAbilitySlot(
+      name: (json['ability'] as Map<String, dynamic>?)?['name'] as String? ?? '',
+      isHidden: json['is_hidden'] as bool? ?? false,
+    );
+  }
+}
+
 class PokemonDetail {
   const PokemonDetail({
     required this.name,
     required this.imageUrl,
     required this.height,
     required this.weight,
+    required this.baseExperience,
     required this.types,
+    required this.stats,
+    required this.abilities,
   });
 
   final String name;
   final String imageUrl;
   final int height;
   final int weight;
+  final int baseExperience;
   final List<PokemonTypeSlot> types;
+  final List<PokemonStatSlot> stats;
+  final List<PokemonAbilitySlot> abilities;
 
   factory PokemonDetail.fromJson(Map<String, dynamic> json) {
     final sprites = json['sprites'] as Map<String, dynamic>? ?? const {};
@@ -77,8 +111,15 @@ class PokemonDetail {
       imageUrl: officialArtwork['front_default'] as String? ?? '',
       height: json['height'] as int? ?? 0,
       weight: json['weight'] as int? ?? 0,
+        baseExperience: json['base_experience'] as int? ?? 0,
       types: (json['types'] as List<dynamic>? ?? const [])
           .map((item) => PokemonTypeSlot.fromJson(item as Map<String, dynamic>))
+          .toList(),
+        stats: (json['stats'] as List<dynamic>? ?? const [])
+          .map((item) => PokemonStatSlot.fromJson(item as Map<String, dynamic>))
+          .toList(),
+        abilities: (json['abilities'] as List<dynamic>? ?? const [])
+          .map((item) => PokemonAbilitySlot.fromJson(item as Map<String, dynamic>))
           .toList(),
     );
   }
